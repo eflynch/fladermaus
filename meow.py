@@ -138,15 +138,16 @@ def envelope(buff):
 
 
 if __name__ == "__main__":
-    buff = generate_noise(15)
+    buff = generate_noise(60)
     #buff = generate_sinewave(1, 440)
     #filtered = band_pass_filter(buff, 20000, 21000)
     #filtered = mask_filter(buff, ((439, 441), (513, 536), (782, 783)))
     #filtered = mask_filter(buff, ((439, 441), (513, 536), (782, 783), (200, 210), (300, 500), (1235, 1250)))
     #filtered = mask_filter(buff, ((200, 210), (300, 500), (1235, 1250)))
     filtered = mask_filter(buff, ((0, 5500), (6500, 22050)))
-    filname = '/Users/eflynch/noise.wav'
-    #write_to_file(filtered, filename)
 
-    write_to_stream(filtered)
+    import os
+    filename = os.path.dirname(os.path.realpath(__file__))+'/data/noise.wav'
+    write_to_file(filtered, filename)
+    #write_to_stream(filtered)
 
